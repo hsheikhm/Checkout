@@ -8,6 +8,10 @@ class Order
     @total_price = 0
   end
 
+  def basket
+    @basket
+  end
+
   attr_reader :products_list
 
 end

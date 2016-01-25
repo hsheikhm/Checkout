@@ -18,6 +18,10 @@ describe Order do
       expect(order).to have_attributes(products_list: products.list)
     end
 
+    it "creates an empty #basket" do
+      expect(order).to have_attributes(order.basket)
+    end
+
   end
 
 end
