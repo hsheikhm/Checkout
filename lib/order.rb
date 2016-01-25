@@ -16,6 +16,10 @@ class Order
     basket[item] += quantity
   end
 
+  def calculate_total_price
+    basket.each{|itm, qty| @total_price += (products_list[itm][:price] * qty)}
+  end
+
   attr_reader :products_list, :total_price
 
 end

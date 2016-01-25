@@ -38,4 +38,15 @@ describe Order do
 
   end
 
+  context "#calculate_total_price" do
+
+    it "sets the #total_price" do
+      order.add_to_basket(001)
+      order.add_to_basket(002)
+      order.calculate_total_price
+      expect(order.total_price).to eq 54.25
+    end
+
+  end
+
 end
