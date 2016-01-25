@@ -12,6 +12,6 @@ class Order
     @basket
   end
 
-  attr_reader :products_list
+  attr_reader :products_list, :total_price
 
 end

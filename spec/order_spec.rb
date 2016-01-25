@@ -19,7 +19,11 @@ describe Order do
     end
 
     it "creates an empty #basket" do
-      expect(order).to have_attributes(order.basket)
+      expect(order).to have_attributes(basket: Hash.new(0))
+    end
+
+    it "creates a #total_price property that starts at 0" do
+      expect(order).to have_attributes(total_price: 0)
     end
 
   end
