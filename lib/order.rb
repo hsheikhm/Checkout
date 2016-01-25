@@ -2,6 +2,8 @@ require_relative 'products'
 
 class Order
 
+  LAVENDER_HEARTS_DISCOUNT = 0.75
+
   def initialize(products = Products.new)
     @products_list = products.list
     @basket = Hash.new(0)
@@ -22,6 +24,10 @@ class Order
 
   def number_of_lavender_hearts
     basket[1]
+  end
+
+  def apply_lavender_hearts_discount
+    @total_price -= (LAVENDER_HEARTS_DISCOUNT * number_of_lavender_hearts)
   end
 
   attr_reader :products_list, :total_price

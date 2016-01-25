@@ -59,4 +59,16 @@ describe Order do
 
   end
 
+  context "discounts" do
+
+    it "#apply_lavender_hearts_discount if 2 or more lavender hearts" do
+      3.times{ order.add_to_basket(001) }
+      order.calculate_total_price
+      expect(order.total_price).to eq 27.75
+      order.apply_lavender_hearts_discount
+      expect(order.total_price).to eq 25.5
+    end
+
+  end
+
 end
