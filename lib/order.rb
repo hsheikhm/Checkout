@@ -12,6 +12,10 @@ class Order
     @basket
   end
 
+  def add_to_basket(item, quantity = 1)
+    basket[item] += quantity
+  end
+
   attr_reader :products_list, :total_price
 
 end

@@ -28,4 +28,14 @@ describe Order do
 
   end
 
+  context "#add_to_basket" do
+
+    it "adds an item to the basket" do
+      order.add_to_basket(001)
+      expect(order.basket).not_to be_empty
+      expect(order.basket[001]).to eq 1
+    end
+
+  end
+
 end
