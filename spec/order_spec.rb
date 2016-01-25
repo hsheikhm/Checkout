@@ -49,4 +49,14 @@ describe Order do
 
   end
 
+  context "#number_of_lavender_hearts" do
+
+    it "retrieves the number of lavender hearts in the basket" do
+      order.add_to_basket(001)
+      order.add_to_basket(001)
+      expect(order.number_of_lavender_hearts).to eq 2
+    end
+
+  end
+
 end

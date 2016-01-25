@@ -20,6 +20,10 @@ class Order
     basket.each{|itm, qty| @total_price += (products_list[itm][:price] * qty)}
   end
 
+  def number_of_lavender_hearts
+    basket[1]
+  end
+
   attr_reader :products_list, :total_price
 
 end
