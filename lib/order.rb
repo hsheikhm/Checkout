@@ -35,6 +35,10 @@ class Order
     @total_price -= (@total_price * MINIMUM_SPEND_DISCOUNT)
   end
 
+  def print_final_price
+    "£#{(total_price).round(2)}"
+  end
+
   attr_reader :products_list, :total_price
 
 end

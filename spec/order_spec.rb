@@ -79,4 +79,15 @@ describe Order do
 
   end
 
+  context "#print_final_price" do
+
+    it "prints the final price after discounts are applied" do
+      3.times{ order.add_to_basket(001) }
+      order.calculate_total_price
+      order.apply_lavender_hearts_discount
+      expect(order.print_final_price).to eq "£25.5"
+    end
+
+  end
+
 end
