@@ -63,3 +63,12 @@ Throughout my code I kept strict to the **SOLID** principles and made use of **S
 ```
 
 # Download Instructions
+
+```
+$ git clone https://github.com/hsheikhm/Checkout.git
+$ cd Checkout
+$ irb
+$ require './lib/checkout.rb'
+```
+
+Author: [Hamza Sheikh](https://github.com/hsheikhm)
