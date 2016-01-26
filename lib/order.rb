@@ -3,6 +3,7 @@ require_relative 'products'
 class Order
 
   LAVENDER_HEARTS_DISCOUNT = 0.75
+  MINIMUM_SPEND_DISCOUNT = 0.10
 
   def initialize(products = Products.new)
     @products_list = products.list
@@ -28,6 +29,10 @@ class Order
 
   def apply_lavender_hearts_discount
     @total_price -= (LAVENDER_HEARTS_DISCOUNT * number_of_lavender_hearts)
+  end
+
+  def apply_ten_percent_off_discount
+    @total_price -= (@total_price * MINIMUM_SPEND_DISCOUNT)
   end
 
   attr_reader :products_list, :total_price

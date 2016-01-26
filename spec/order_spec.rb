@@ -69,6 +69,14 @@ describe Order do
       expect(order.total_price).to eq 25.5
     end
 
+    it "#apply_ten_percent_off_discount when #total_price is over £60" do
+      10.times{ order.add_to_basket(001) }
+      order.calculate_total_price
+      expect(order.total_price).to eq 92.5
+      order.apply_ten_percent_off_discount
+      expect(order.total_price).to eq 83.25
+    end
+
   end
 
 end
