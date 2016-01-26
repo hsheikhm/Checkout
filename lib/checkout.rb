@@ -16,4 +16,8 @@ class Checkout
     @promotional_rules
   end
 
+  def scan(item)
+    order.add_to_basket(item)
+  end
+
 end

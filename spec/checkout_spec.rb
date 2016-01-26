@@ -23,4 +23,17 @@ describe Checkout do
 
   end
 
+  context "#scan" do
+
+    it "adds an item to the order's basket" do
+      item = 001
+      allow(order).to receive(:add_to_basket).with(item)
+      allow(order).to receive(:basket) { {001 => 1} }
+      expect(order).to receive(:add_to_basket).with(item)
+      checkout.scan(item)
+      expect(order.basket).not_to be_empty
+    end
+
+  end
+
 end
