@@ -40,3 +40,26 @@ Throughout my code I kept strict to the **SOLID** principles and made use of **S
 ```
 
 ## Feature Test Sample
+
+***New Checkout object:***
+```
+2.2.3 :002 > co = Checkout.new
+```
+
+***Checkout can scan items which are added to the basket:***
+```
+2.2.3 :003 > co.scan(001)
+ => 1
+2.2.3 :004 > co.scan(002)
+ => 1
+2.2.3 :005 > co.scan(003)
+ => 1
+```
+
+***Checkout can calculate the total price:***
+```
+2.2.3 :006 > co.total
+ => "£66.78"
+```
+
+# Download Instructions
