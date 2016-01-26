@@ -20,4 +20,11 @@ class Checkout
     order.add_to_basket(item)
   end
 
+  def total
+    order.calculate_total_price
+    promotional_rules.current_order(order)
+    promotional_rules.apply_discounts
+    order.print_final_price
+  end
+
 end

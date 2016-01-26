@@ -36,4 +36,37 @@ describe Checkout do
 
   end
 
+  context "#total" do
+
+    before do
+      allow(order).to receive(:calculate_total_price)
+      allow(promotional_rules).to receive(:current_order).with(order)
+      allow(promotional_rules).to receive(:apply_discounts)
+      allow(order).to receive(:print_final_price) { "£9.25" }
+      allow(order).to receive(:add_to_basket).with(001)
+    end
+
+    it "calculates the total price of the #order" do
+      expect(order).to receive(:calculate_total_price)
+      checkout.total
+    end
+
+    it "sets the current order to apply promotional discounts to" do
+      expect(promotional_rules).to receive(:current_order).with(order)
+      checkout.total
+    end
+
+    it "applies any discounts available" do
+      expect(promotional_rules).to receive(:apply_discounts)
+      checkout.total
+    end
+
+    it "prints the final price" do
+      expect(order).to receive(:print_final_price)
+      checkout.total
+      expect(checkout.total).to eq "£9.25"
+    end
+
+  end
+
 end
