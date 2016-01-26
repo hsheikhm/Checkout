@@ -33,4 +33,24 @@ describe Promotional_rules do
 
   end
 
+  context "#apply_discounts" do
+
+    before do
+      promotional_rules.current_order(order)
+      allow(order).to receive(:apply_lavender_hearts_discount) { true }
+      allow(order).to receive(:apply_ten_percent_off_discount) { true }
+    end
+
+    it "applies a discount if there are two or more lavender hearts" do
+      expect(order).to receive(:apply_lavender_hearts_discount)
+      promotional_rules.apply_discounts
+    end
+
+    it "applies a discount if #total_price is over £60" do
+      expect(order).to receive(:apply_ten_percent_off_discount)
+      promotional_rules.apply_discounts
+    end
+
+  end
+
 end
