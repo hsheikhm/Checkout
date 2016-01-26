@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Checkout by hsheikhm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Checkout</h1>
+      <h2 class="project-tagline">A Ruby program to build a checkout system</h2>
+      <a href="https://github.com/hsheikhm/Checkout" class="btn">View on GitHub</a>
+      <a href="https://github.com/hsheikhm/Checkout/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/hsheikhm/Checkout/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="checkout--" class="anchor" href="#checkout--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Checkout <a href="https://travis-ci.org/hsheikhm/Checkout"><img src="https://travis-ci.org/hsheikhm/Checkout.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/hsheikhm/Checkout?branch=master"><img src="https://coveralls.io/repos/github/hsheikhm/Checkout/badge.svg?branch=master" alt="Coverage Status"></a>
+</h1>
+
+<ul>
+<li><a href="#task">Task</a></li>
+<li><a href="#my-approach">My Approach</a></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#feature-test-sample">Feature Test Sample</a></li>
+<li><a href="#download-instructions">Download Instructions</a></li>
+</ul>
+
+<h2>
+<a id="task" class="anchor" href="#task" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Task</h2>
+
+<p>Build a Checkout system in Ruby.</p>
+
+<h2>
+<a id="my-approach" class="anchor" href="#my-approach" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>My Approach</h2>
+
+<p>Initially I played around in irb to see what kind of objects and methods would need to be created. From that I put together a <strong>Domain Model</strong> to organise the objects. Then I decided on the number of classes that would be needed, in this case four (listed below). Once I had a clear picture, I next began writing my <a href="https://github.com/hsheikhm/Checkout/tree/master/spec">tests</a> and making them pass one by one.</p>
+
+<p>Throughout my code I kept strict to the <strong>SOLID</strong> principles and made use of <strong>Single Responsibility Principle (SRP)</strong> and <strong>Dependency Injection (DI)</strong>. I structured my code into 4 separate classes with each having its own responsibility. I also aimed to keep each method to having only one responsibility too. As for DI, you will see that I had incorporated this into my <strong>Checkout</strong> and <strong>Order</strong> classes within the <strong><em>initialize</em></strong> method. As a result I was able to use the <strong>London Style</strong> (as opposed to Chicago Style) when it came to my <strong>RSpec</strong> testing since I could use <strong><em>doubles</em></strong> to represent my other class objects. This allowed all my unit tests to become isolated.</p>
+
+<ul>
+<li>
+<a href="https://github.com/hsheikhm/Checkout/blob/master/lib/checkout.rb">Checkout</a> (Responsible for creating an order instance and a set of promotional rules. Responsible for scanning items and retrieving the total price after discounts).</li>
+<li>
+<a href="https://github.com/hsheikhm/Checkout/blob/master/lib/products.rb">Products</a> (Responsible for listing all products available. Any new product can easily be added into this class).</li>
+<li>
+<a href="https://github.com/hsheikhm/Checkout/blob/master/lib/order.rb">Order</a> (Responsible for creating a basket, adding items to the basket, calculating the total price and applying any eligible discounts).</li>
+<li>
+<a href="https://github.com/hsheikhm/Checkout/blob/master/lib/promotional_rules.rb">Promotional rules</a> (Responsible for listing all the promotional rules. A new rule can easily be added into this class).</li>
+</ul>
+
+<h2>
+<a id="directory-structure" class="anchor" href="#directory-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directory Structure</h2>
+
+<pre><code>├── lib/
+│   ├── checkout.rb
+│   ├── order.rb
+│   ├── products.rb
+│   └── promotional_rules.rb
+│   
+├── spec/
+│   ├── checkout_spec.rb
+│   ├── order_spec.rb
+│   ├── products_spec.rb
+│   ├── promotional_rules_spec.rb
+│   └── spec_helper.rb
+│
+</code></pre>
+
+<h2>
+<a id="feature-test-sample" class="anchor" href="#feature-test-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature Test Sample</h2>
+
+<p><strong><em>New Checkout object:</em></strong></p>
+
+<pre><code>2.2.3 :002 &gt; co = Checkout.new
+</code></pre>
+
+<p><strong><em>Checkout can scan items which are added to the basket:</em></strong></p>
+
+<pre><code>2.2.3 :003 &gt; co.scan(001)
+ =&gt; 1
+2.2.3 :004 &gt; co.scan(002)
+ =&gt; 1
+2.2.3 :005 &gt; co.scan(003)
+ =&gt; 1
+</code></pre>
+
+<p><strong><em>Checkout can calculate the total price:</em></strong></p>
+
+<pre><code>2.2.3 :006 &gt; co.total
+ =&gt; "£66.78"
+</code></pre>
+
+<h1>
+<a id="download-instructions" class="anchor" href="#download-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download Instructions</h1>
+
+<pre><code>$ git clone https://github.com/hsheikhm/Checkout.git
+$ cd Checkout
+$ irb
+$ require './lib/checkout.rb'
+</code></pre>
+
+<p>Author: <a href="https://github.com/hsheikhm">Hamza Sheikh</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/hsheikhm/Checkout">Checkout</a> is maintained by <a href="https://github.com/hsheikhm">hsheikhm</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
