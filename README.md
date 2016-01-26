@@ -8,7 +8,7 @@
 
 ## Task
 
-#### Build a Checkout system in Ruby.
+Build a Checkout system in Ruby.
 
 ## My Approach
 
@@ -22,3 +22,21 @@ Throughout my code I kept strict to the **SOLID** principles and made use of **S
 * [Promotional rules](https://github.com/hsheikhm/Checkout/blob/master/lib/promotional_rules.rb) (Responsible for listing all the promotional rules. A new rule can easily be added into this class).
 
 ## Directory Structure
+
+```
+├── lib/
+│   ├── checkout.rb
+│   ├── order.rb
+│   ├── products.rb
+│   └── promotional_rules.rb
+│   
+├── spec/
+│   ├── checkout_spec.rb
+│   ├── order_spec.rb
+│   ├── products_spec.rb
+│   ├── promotional_rules_spec.rb
+│   └── spec_helper.rb
+│
+```
+
+## Feature Test Sample
